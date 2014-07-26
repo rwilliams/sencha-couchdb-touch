@@ -34,7 +34,7 @@ Ext.define('CouchDB.data.Proxy', {
     // This method is overridden to switch between loading a single object or executing a query using
     // a CouchDB view.
     read: function(operation, callback, scope) {
-        var extraParams ={
+        var extraParams = {
             'include_docs': true
         }
 
@@ -55,9 +55,9 @@ Ext.define('CouchDB.data.Proxy', {
         } finally {
             this.setAppendId(true);
             this.config.api.read = this.restUrl;
-            // The proxy should not keep the 'include_docs' parameter around for subsequent requests.
-            this.destroyMembers(this.config.extraParams, 'include_docs');
-            this.destroyMembers(this.config.extraParams, 'key');
+            
+            //clear extraParams
+            this.config.extraParams = {};
         }
     },
 
@@ -104,14 +104,8 @@ Ext.define('CouchDB.data.Proxy', {
             Ext.apply(this.config.extraParams, { 'rev': operation.getRecords()[0].get('_rev') });
             this.callParent(arguments);
         } finally {
-            // The proxy should not keep the 'rev' parameter around for subsequent requests.
-            this.destroyMembers(this.config.extraParams, 'rev');
-        }
-    },
-    destroyMembers : function(o){
-        for (var i = 1, a = arguments, len = a.length; i < len; i++) {
-            Ext.destroy(o[a[i]]);
-            delete o[a[i]];
+            //clear extraParams
+            this.config.extraParams = {};
         }
     }
 });
