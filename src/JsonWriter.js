@@ -16,7 +16,7 @@ Ext.define('CouchDB.data.Writer', {
 
         fields.each(function(field) {
             if (field.getPersist()) {
-                name = field.config[nameProperty] || field.getName();
+                name = field.config.mapping || field.getName();
                 value = record.get(field.getName());
                 if (field.getType().type == 'date') {
                     value = this.writeDate(field, value);

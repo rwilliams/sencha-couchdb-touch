@@ -8,7 +8,7 @@ CouchDB Compatible databases(that i know of):
 
 - CouchDB (duh)
 - Cloudant
-- PouchDB
+- PouchDB (using pouchdb-server)
 - Couchbase Lite
 
 **NOTE**: SenchaCouchDBTouch has been tested with Sencha Touch 2.3.1

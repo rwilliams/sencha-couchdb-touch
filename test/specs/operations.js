@@ -14,7 +14,8 @@ describe("CRUD Operations", function () {
             fields: [
                 {
                     name: 'name',
-                    type: 'string'
+                    type: 'string',
+                    mapping: 'first_name'
                 },
                 {
                     name: 'age',
@@ -46,7 +47,8 @@ describe("CRUD Operations", function () {
             fields: [
                 {
                     name: 'name',
-                    type: 'string'
+                    type: 'string',
+                    mapping: 'first_name'
                 },
                 {
                     name: 'color',
